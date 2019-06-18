@@ -432,6 +432,7 @@ public class FieldScript : MonoBehaviour
     void holdCurrentPiece()
     {
         var tempPiece = currentPiece;
+        removeReflection();
         removePiece(currentPiece);
 
         LinkedList<Vector3> tempSet2 = new LinkedList<Vector3>();
@@ -470,6 +471,7 @@ public class FieldScript : MonoBehaviour
         {
             PieceObject newObject = createPiece(tempSet2, true, tempString);
             currentPiece = newObject;
+            createReflectionPiece(tempSet2, currentPiece);
         }
 
 
@@ -886,13 +888,7 @@ public class FieldScript : MonoBehaviour
     //Takes in a piece object and completely removes from exists (including gameobjects and arrays etc)
     void removePiece(PieceObject tempPiece)
     {
-        if(tempPiece == currentPiece)
-        {
-            foreach(var tempObject in currentPiece.reflectionObjects)
-            {
-                Destroy(tempObject);
-            }
-        }
+        
         currentPieces -= 1;
         allPieces.Remove(tempPiece);
         removeBlockPositions(tempPiece);
@@ -902,6 +898,15 @@ public class FieldScript : MonoBehaviour
         }
 
     }
+
+    void removeReflection()
+    {
+        foreach (var element in currentPiece.reflectionObjects)
+        {
+            Destroy(element);
+        }
+    }
+
 
     //See name
     void movePieceDown(PieceObject tempPiece)
@@ -1260,7 +1265,8 @@ public class FieldScript : MonoBehaviour
     //locks the current piece in its spot, swaps it for no outline piece, swaps spawn boolean
     void lockPieceAndSwapSpawn()
     {
-        
+
+        removeReflection();
         removeOutline(currentPiece, currentPiece.getPieceName());
         hasHeldBool = false;
         playPieceSound(pieceLockedSound);

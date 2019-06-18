@@ -606,6 +606,8 @@ public class PieceObject {
 
 
 
+    
+
     public bool possibleDownwardMovement()
     {
         bool currentBool = true;
