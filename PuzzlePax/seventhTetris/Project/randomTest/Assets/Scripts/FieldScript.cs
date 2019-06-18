@@ -115,7 +115,7 @@ public class FieldScript : MonoBehaviour
         }
 
 
-        Debug.Log("XPos1: " + leftJoyPosition.GetAxis(leftHand).x + "XPos2: " + leftJoyPosition.GetAxis(leftHand).y);
+        //Debug.Log("XPos1: " + leftJoyPosition.GetAxis(leftHand).x + "XPos2: " + leftJoyPosition.GetAxis(leftHand).y);
 
         //Button to hold a piece; Currently assigned to right trigger
         if (holdAction.GetStateDown(rightHand) || Input.GetButtonDown("Hold"))
@@ -247,7 +247,7 @@ public class FieldScript : MonoBehaviour
 
         //Button for Rotating X, Currently Top Button
         if ((rotateXJoy.GetStateDown(rightHand) && rightJoyPosition.GetAxis(rightHand).y > 0.5f && rightJoyPosition.GetAxis(rightHand).x < 0.45f && rightJoyPosition.GetAxis(rightHand).x > -0.45f) || Input.GetButtonDown("rotateX") || (rotateX.GetStateDown(rightHand) && trackpadRightPosition.GetAxis(rightHand).y > 0.5f && trackpadRightPosition.GetAxis(rightHand).x < 0.45f && trackpadRightPosition.GetAxis(rightHand).x > -0.45f))
-        {
+        {   
             if (currentPiece.possibleRotateXAxis(1))
             {
                 //Debug.Log("rotateX");
@@ -380,19 +380,19 @@ public class FieldScript : MonoBehaviour
     {
         playPieceSound(floorRemovedSound);
         //currentScore += 1000;
-        Debug.Log("removing full wall Z");
+        //Debug.Log("removing full wall Z");
         LinkedList<PieceObject> tempList = new LinkedList<PieceObject>();
         foreach (PieceObject element in allPieces)
         {
             if (element.isFullyPartOfWallZ(zVal, sizeDim, yOffset))
             {
-                Debug.Log("fully part of wall tick");
+                //Debug.Log("fully part of wall tick");
                 //removePiece(element);
                 tempList.AddLast(element);
             }
             else if (element.isPartiallyPartOfWallZ(zVal, sizeDim, yOffset))
             {
-                Debug.Log("partially part of wall tick");
+                //Debug.Log("partially part of wall tick");
                 removeBlockPositions(element);
                 removePieceFromWallZ(element, zVal);
                 addBlockPositions(element);
@@ -404,7 +404,7 @@ public class FieldScript : MonoBehaviour
         //Debug.Log(tempList.Count);
         while (currNode != null)
         {
-            Debug.Log("recursion tick");
+            //Debug.Log("recursion tick");
             removePiece(currNode.Value);
             currNode = currNode.Next;
         }
@@ -430,20 +430,20 @@ public class FieldScript : MonoBehaviour
 
     void gravityCheck()
     {
-        Debug.Log("grav check");
+        //Debug.Log("grav check");
         bool somethingMoved = true;
 
         while (somethingMoved)
         {
-            Debug.Log("while tick");
+            //Debug.Log("while tick");
             somethingMoved = false;
             foreach (PieceObject elementPiece in allPieces)
             {
-                Debug.Log("piece tick");
-                Debug.Log(elementPiece.getActualObjects().Count);
+                //Debug.Log("piece tick");
+                //Debug.Log(elementPiece.getActualObjects().Count);
                 if (elementPiece.possibleDownwardMovement())
                 {
-                    Debug.Log("moved down");
+                    //Debug.Log("moved down");
                     somethingMoved = true;
                     movePieceDown(elementPiece);
                 }
