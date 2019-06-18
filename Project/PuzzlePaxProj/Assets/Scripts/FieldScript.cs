@@ -372,7 +372,7 @@ public class FieldScript : MonoBehaviour
 
         foreach (var tempVector in piecePositions)
         {
-            newList.AddLast(new Vector3(tempVector.x, tempVector.y - 1, tempVector.z - 1));
+            newList.AddLast(new Vector3(tempVector.x, tempVector.y - 1, tempVector.z ));
         }
 
         tempPiece.reflectionObjects = createPieceGameObject(newList, true, tempPiece.getPieceName());
