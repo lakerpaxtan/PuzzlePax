@@ -98,7 +98,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/movedown"
+                     "output" : "/actions/default/in/instantplacement"
                   }
                },
                "mode" : "trigger",
@@ -190,6 +190,24 @@
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/movedown"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/application_menu"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/movedown"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/application_menu"
             }
          ]
       },

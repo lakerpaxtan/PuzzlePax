@@ -43,7 +43,7 @@ public class PieceObject {
 
         foreach(GameObject element in actualObjects)
         {
-            if(element.transform.position.x != xVal || (element.transform.position.y > sizeDim + yOffset - 4))
+            if(element.transform.position.x != xVal || (element.transform.position.y > sizeDim + yOffset - (FieldScript.wallOff + 1)))
             {
                 return false;
             }
@@ -60,7 +60,7 @@ public class PieceObject {
 
         foreach (GameObject element in actualObjects)
         {
-            if (element.transform.position.z != zVal || (element.transform.position.y > sizeDim + yOffset - 4))
+            if (element.transform.position.z != zVal || (element.transform.position.y > sizeDim + yOffset - (FieldScript.wallOff+1)))
             {
                 return false;
             }

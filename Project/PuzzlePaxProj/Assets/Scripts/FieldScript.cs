@@ -41,7 +41,7 @@ public class FieldScript : MonoBehaviour
     //public static GameObject spherePref2;
 
 
-    private int wallOff;
+    public static int wallOff;
     private bool shouldSpawn;
     private Vector3 spawnTop;
     private PieceObject currentPiece;
@@ -786,7 +786,7 @@ public class FieldScript : MonoBehaviour
             currObject = currNode.Value;
             currNode = currNode.Next;
             //Debug.Log(currNode);
-            if (currObject.transform.position.y <= sizeDim + yOffset - 4 && currObject.transform.position.x == xVal)
+            if (currObject.transform.position.y <= sizeDim + yOffset - (FieldScript.wallOff + 1) && currObject.transform.position.x == xVal)
             {
                 Debug.Log("gameobject is part of wall and not above");
                 //Debug.Log("0 y value");
@@ -820,7 +820,7 @@ public class FieldScript : MonoBehaviour
             currNode = currNode.Next;
             //Debug.Log(currNode);
             
-            if (currObject.transform.position.y <= sizeDim + yOffset - 4 && currObject.transform.position.z == zVal)
+            if (currObject.transform.position.y <= sizeDim + yOffset - (FieldScript.wallOff + 1) && currObject.transform.position.z == zVal)
             {
                 Debug.Log("gameobject is part of wall and not above");
                 //Debug.Log("0 y value");

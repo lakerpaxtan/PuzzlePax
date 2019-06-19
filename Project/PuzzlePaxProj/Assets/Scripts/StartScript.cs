@@ -10,7 +10,7 @@ public class StartScript : MonoBehaviour {
 
     public GameObject normPref;
     public GameObject perfPref;
-    public GameObject randomOrigin;
+    public GameObject restartOrigin;
     //public GameObject otherSelection;
     public GameObject GameManager;
     public AudioClip startNoise;
@@ -56,10 +56,8 @@ public class StartScript : MonoBehaviour {
             fieldScript.enabled = true;
             playPieceSound(startNoise);
             var temp = Instantiate(restartPref);
-            temp.transform.position = this.transform.position;
-            temp.transform.position = temp.transform.position + new Vector3(1, 2, 0);
-            temp.transform.rotation = this.transform.rotation;
-            temp.transform.Rotate(new Vector3(0, 0, 90));
+            temp.transform.position = restartOrigin.transform.position;
+            temp.transform.Rotate(new Vector3(0f, -90f, 0f));
             //Destroy(otherSelection);
             Destroy(startButtons);
             Destroy(this);
@@ -72,7 +70,8 @@ public class StartScript : MonoBehaviour {
             fieldScript.enabled = true;
             playPieceSound(startNoise);
             var temp = Instantiate(restartPref);
-            temp.transform.position = randomOrigin.transform.position;
+            temp.transform.position = restartOrigin.transform.position;
+            temp.transform.Rotate(new Vector3(0f, -90f, 0f));
             //temp.transform.position = temp.transform.position + new Vector3(1, 2, 0);
             //temp.transform.rotation = this.transform.rotation;
             //temp.transform.Rotate(new Vector3(0, 0, 90));
