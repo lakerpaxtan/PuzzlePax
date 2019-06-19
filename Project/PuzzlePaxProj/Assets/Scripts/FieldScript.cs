@@ -24,11 +24,16 @@ public class FieldScript : MonoBehaviour
     public GameObject textObject;
     public Material lMaterial;
     public Material lineMaterial;
+
+    public Material cubeMaterial;
+    public Material cubeMaterialST;
     public Material zMaterial;
     public Material lMaterialST;
     public Material lineMaterialST;
     public Material zMaterialST;
     public Material tMaterialST;
+    public Material cornerMaterialST;
+    public Material cornerMaterial;
     public float currentSpeed;
     public float currentDecrement;
     public float currentDecrementRate;
@@ -36,6 +41,7 @@ public class FieldScript : MonoBehaviour
     //public static GameObject spherePref2;
 
 
+    private int wallOff;
     private bool shouldSpawn;
     private Vector3 spawnTop;
     private PieceObject currentPiece;
@@ -87,6 +93,7 @@ public class FieldScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        wallOff = 4;
         hasHeldBool = false;
         yOffset = 5;
         randomScript = this.gameObject.GetComponent<RandomPiece>();
@@ -419,6 +426,12 @@ public class FieldScript : MonoBehaviour
             case ("zPiece"):
                 reflectionMat = zMaterialST;
                 break;
+            case ("cubePiece"):
+                reflectionMat = cubeMaterialST;
+                break;
+            case ("cornerPiece"):
+                reflectionMat = cornerMaterialST;
+                break;
         }
 
         var currNode = reflectionObjects.First;
@@ -470,6 +483,14 @@ public class FieldScript : MonoBehaviour
         else if (tempString == "tPiece")
         {
             tempSet2 = tPieceSet();
+        }
+        else if (tempString == "cubePiece")
+        {
+            tempSet2 = cubePieceSet();
+        }
+        else if (tempString == "cornerPiece")
+        {
+            tempSet2 = cornerPieceSet();
         }
 
         if (lossCheck(tempSet2))
@@ -846,7 +867,7 @@ public class FieldScript : MonoBehaviour
     {
         for (int x = 0; x < sizeDim; x++)
         {
-            for (int y = 0; y < sizeDim-3 + yOffset; y++)
+            for (int y = 0; y < sizeDim-wallOff + yOffset; y++)
             {
                 if (boolField[x, y, zVal] == false)
                 {
@@ -864,7 +885,7 @@ public class FieldScript : MonoBehaviour
     {
         for (int z = 0; z < sizeDim; z++)
         {
-            for (int y = 0; y < sizeDim-3 + yOffset; y++)
+            for (int y = 0; y < sizeDim-wallOff + yOffset; y++)
             {
                 if (boolField[xVal, y, z] == false)
                 {
@@ -1113,6 +1134,16 @@ public class FieldScript : MonoBehaviour
                 tempString = "zPiece";
                 break;
 
+            case 5: 
+                tempSet2 = cubePieceSet();
+                tempString = "cubePiece";
+                break;
+            
+            case 6: 
+                tempSet2 = cornerPieceSet();
+                tempString = "cornerPiece";
+                break;
+
             default:
                 tempString = "broken";
                 break;
@@ -1153,6 +1184,22 @@ public class FieldScript : MonoBehaviour
 
     }
 
+    LinkedList<Vector3> cubePieceSet()
+    {
+        LinkedList<Vector3> tempSet2 = new LinkedList<Vector3>();
+        Vector3 tempVector;
+        tempSet2.AddLast(spawnTop);
+        tempVector = new Vector3(spawnTop.x, spawnTop.y, spawnTop.z + 1);
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x + 1, spawnTop.y, spawnTop.z + 1);
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x + 1, spawnTop.y, spawnTop.z);
+        tempSet2.AddLast(tempVector);
+
+        return tempSet2;
+
+    }
+
     //returns a set of vector points for a z piece
     LinkedList<Vector3> zPieceSet()
     {
@@ -1181,6 +1228,22 @@ public class FieldScript : MonoBehaviour
         tempVector = new Vector3(spawnTop.x - 2, spawnTop.y, spawnTop.z);
         tempSet2.AddLast(tempVector);
         tempVector = new Vector3(spawnTop.x - 3, spawnTop.y, spawnTop.z);
+        tempSet2.AddLast(tempVector);
+
+        return tempSet2;
+
+    }
+
+    LinkedList<Vector3> cornerPieceSet()
+    {
+        LinkedList<Vector3> tempSet2 = new LinkedList<Vector3>();
+        Vector3 tempVector;
+        tempSet2.AddLast(spawnTop);
+        tempVector = new Vector3(spawnTop.x + 1, spawnTop.y, spawnTop.z);
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x , spawnTop.y, spawnTop.z + 1);
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x , spawnTop.y + 1, spawnTop.z);
         tempSet2.AddLast(tempVector);
 
         return tempSet2;
@@ -1277,6 +1340,14 @@ public class FieldScript : MonoBehaviour
             if(tempString == "zPiece")
             {
                 currentCube.GetComponent<MeshRenderer>().material = zMaterial;
+            }
+            if(tempString == "cubePiece")
+            {
+                currentCube.GetComponent<MeshRenderer>().material = cubeMaterial;
+            }
+            if(tempString == "cornerPiece")
+            {
+                currentCube.GetComponent<MeshRenderer>().material = cornerMaterial;
             }
 
 

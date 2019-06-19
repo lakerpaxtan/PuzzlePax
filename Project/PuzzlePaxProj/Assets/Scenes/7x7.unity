@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11862663, g: 0.6924632, b: 0.7634183, a: 1}
+  m_IndirectSpecularColor: {r: 0.118607715, g: 0.69300354, b: 0.7625917, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -348,8 +348,11 @@ MonoBehaviour:
     type: 2}
   lPrefab: {fileID: 1088835485960136, guid: ac561527e7151224abc0e5f6909dfd37, type: 2}
   tPrefab: {fileID: 1214285257743144, guid: a7b9692a2b2ed924db9c280cfed94ddf, type: 2}
+  cubePrefab: {fileID: 1700488140381996, guid: f5270f7d624d0417aa43f872349e1217, type: 2}
   zPrefab: {fileID: 1778885992766154, guid: f23dfd13142ec694595d88b7a3fa13f7, type: 2}
   linePrefab: {fileID: 1281086129486866, guid: 5d96a459cf4802249a4ab38d9bfcbec0, type: 2}
+  cornerPrefab: {fileID: 1182613826899774, guid: 3ed259edd2b0545959a60244bc02a2b8,
+    type: 2}
 --- !u!54 &174839721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -383,6 +386,9 @@ MonoBehaviour:
   tPrefab: {fileID: 1214285257743144, guid: a7b9692a2b2ed924db9c280cfed94ddf, type: 2}
   zPrefab: {fileID: 1778885992766154, guid: f23dfd13142ec694595d88b7a3fa13f7, type: 2}
   linePrefab: {fileID: 1281086129486866, guid: 5d96a459cf4802249a4ab38d9bfcbec0, type: 2}
+  cubePrefab: {fileID: 1700488140381996, guid: f5270f7d624d0417aa43f872349e1217, type: 2}
+  cornerPrefab: {fileID: 1182613826899774, guid: 3ed259edd2b0545959a60244bc02a2b8,
+    type: 2}
 --- !u!114 &174839723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,11 +413,15 @@ MonoBehaviour:
   textObject: {fileID: 1774527173}
   lMaterial: {fileID: 2100000, guid: e60b02708aa4b0a4798725b5d995e6a0, type: 2}
   lineMaterial: {fileID: 2100000, guid: a1a7f30e473cc5a409643ab5e02837b7, type: 2}
+  cubeMaterial: {fileID: 2100000, guid: dcdf624f9dc1643d8b351d0d0d01cd59, type: 2}
+  cubeMaterialST: {fileID: 2100000, guid: f9a67a2e88f574e8099487caf7bd2617, type: 2}
   zMaterial: {fileID: 2100000, guid: eca9edb7bcc825d468e46b36cd676cf4, type: 2}
   lMaterialST: {fileID: 2100000, guid: f6db5157c0b9b02428f32d46e8f889ee, type: 2}
   lineMaterialST: {fileID: 2100000, guid: e01ef661b63b038429a97378233cc04d, type: 2}
   zMaterialST: {fileID: 2100000, guid: 6d6e5682bc09a414685b00bfe18fa8cd, type: 2}
   tMaterialST: {fileID: 2100000, guid: 7b4962ee2e433bd4d90f62643176ce18, type: 2}
+  cornerMaterialST: {fileID: 2100000, guid: 06e9d49f0d8444c53955724ddf468e16, type: 2}
+  cornerMaterial: {fileID: 2100000, guid: 06bfb28652886441eaf29ccf6659b85d, type: 2}
   currentSpeed: 3
   currentDecrement: 0.002
   currentDecrementRate: 1
@@ -3102,7 +3112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332061361}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 20.341, y: 9.75, z: -2.6554}
+  m_LocalPosition: {x: 20.341, y: 8.7, z: -2.655}
   m_LocalScale: {x: 0.038951043, y: 7.0492406, z: 0.06884003}
   m_Children: []
   m_Father: {fileID: 1144786126}
@@ -3401,7 +3411,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568289922}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 16.918, y: 9.75, z: -6.1537}
+  m_LocalPosition: {x: 16.918, y: 8.7, z: -6.1533}
   m_LocalScale: {x: 0.040039673, y: 6.857578, z: 0.06884}
   m_Children: []
   m_Father: {fileID: 1144786126}
@@ -4050,7 +4060,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1723141466}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 16.918, y: 9.75, z: 0.8996}
+  m_LocalPosition: {x: 16.918, y: 8.7, z: 0.9000001}
   m_LocalScale: {x: 0.040039673, y: 6.857578, z: 0.06884}
   m_Children: []
   m_Father: {fileID: 1144786126}
@@ -4803,7 +4813,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1940420994}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 13.469, y: 9.75, z: -2.6554}
+  m_LocalPosition: {x: 13.469, y: 8.7, z: -2.655}
   m_LocalScale: {x: 0.038951043, y: 7.0492406, z: 0.06884003}
   m_Children: []
   m_Father: {fileID: 1144786126}

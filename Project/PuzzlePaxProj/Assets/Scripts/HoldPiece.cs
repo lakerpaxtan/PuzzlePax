@@ -18,6 +18,8 @@ public class HoldPiece : MonoBehaviour
 
     public GameObject tPrefab;
 
+    public GameObject cubePrefab;
+
     public GameObject zPrefab;
 
     public GameObject linePrefab;
@@ -27,6 +29,8 @@ public class HoldPiece : MonoBehaviour
     private TMPro.TextMeshProUGUI textComponent;
 
     public static int nextPiece;
+
+    public GameObject cornerPrefab;
 
     private Vector3 showPositionOffset;
     private Vector3 showRotationOffset;
@@ -77,6 +81,13 @@ public class HoldPiece : MonoBehaviour
 
             case "zPiece":
                 showPiece = Instantiate(zPrefab);
+                break;
+
+            case "cubePiece":
+                showPiece = Instantiate(cubePrefab);
+                break;
+            case "cornerPiece":
+                showPiece = Instantiate(cornerPrefab);
                 break;
 
         }
