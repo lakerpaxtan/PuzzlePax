@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.randomtest.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\paxtan\\Documents\\PuzzlePaxRepo\\PuzzlePax\\Project\\PuzzlePaxProj\\actions.json",
+      "action_manifest_path": "C:\\Users\\Paxtan Laker\\Documents\\PuzzlePaxGit\\Project\\PuzzlePaxProj\\actions.json",
       "strings": {
         "en_us": {
           "name": "randomTest [Testing]"

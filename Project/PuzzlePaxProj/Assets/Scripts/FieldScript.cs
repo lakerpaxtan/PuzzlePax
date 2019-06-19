@@ -81,6 +81,7 @@ public class FieldScript : MonoBehaviour
     public SteamVR_Action_Boolean rotateXNegJoy;
     public SteamVR_Action_Vector2 leftJoyPosition;
     public SteamVR_Action_Vector2 rightJoyPosition;
+    public SteamVR_Action_Boolean instantPlacement;
 
 
     // Use this for initialization
@@ -121,6 +122,16 @@ public class FieldScript : MonoBehaviour
 
 
         //Debug.Log("XPos1: " + leftJoyPosition.GetAxis(leftHand).x + "XPos2: " + leftJoyPosition.GetAxis(leftHand).y);
+
+
+
+        if (Input.GetButtonDown("Drop") || instantPlacement.GetStateDown(rightHand) || instantPlacement.GetStateDown(leftHand))
+        {
+            Debug.Log("moving all the day down");
+            moveCurrentPieceAllTheWayDown();
+
+        }
+
 
         //Button to hold a piece; Currently assigned to right trigger
         if (holdAction.GetStateDown(rightHand) || Input.GetButtonDown("Hold"))
@@ -566,7 +577,28 @@ public class FieldScript : MonoBehaviour
     }
 
 
+    void moveCurrentPieceAllTheWayDown()
+    {
+        bool somethingMoved = true;
 
+        while (somethingMoved)
+        {
+            //Debug.Log("while tick");
+            somethingMoved = false;
+
+            if (currentPiece.possibleDownwardMovement())
+            {
+
+                //Debug.Log("moved down");
+                somethingMoved = true;
+                movePieceDown(currentPiece);
+            }
+
+        }
+
+        lockPieceAndSwapSpawn();
+
+    }
 
     void reflectionGravityCheck()
     {

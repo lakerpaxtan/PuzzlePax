@@ -109,6 +109,10 @@
       "type": "vector2"
     },
     {
+      "name": "/actions/default/in/instantPlacement",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

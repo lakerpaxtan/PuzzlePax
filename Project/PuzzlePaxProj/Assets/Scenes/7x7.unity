@@ -490,6 +490,9 @@ MonoBehaviour:
   rightJoyPosition:
     actionPath: /actions/default/in/rightJoyPosition
     needsReinit: 0
+  instantPlacement:
+    actionPath: /actions/default/in/instantPlacement
+    needsReinit: 0
 --- !u!4 &174839724
 Transform:
   m_ObjectHideFlags: 0
