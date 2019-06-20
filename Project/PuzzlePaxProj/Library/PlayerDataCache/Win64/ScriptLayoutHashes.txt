@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/paxtan/Desktop/currentBuild/randomTest.exe
+C:/Users/Paxtan Laker/Desktop/currentBuild/randomTest.exe
 SceneListBegin?
 Assets/Scenes/7x7.unity
 SceneListEnd?
@@ -72,7 +72,7 @@ e90403eeda069970e0b9de1533de13a6 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 3f9bcdb32286b24ca4fcce9d0e3f6211 SteamVR.dll:Valve.VR.InteractionSystem.Equippable
 67894be8f1df17c43d36c31ded6d2bd6 Assembly-CSharp.dll:.RestartScript
 c06217a942f07adedfc7df4aab0001c9 SteamVR.dll:Valve.VR.InteractionSystem.BodyCollider
-d9eb948c885d3f74af92da515812bc95 Assembly-CSharp.dll:.RandomPiece
+1c37b61e80147157b4ed9cff5d135560 Assembly-CSharp.dll:.RandomPiece
 486cd95c82d8305219c352c06b776e1f SteamVR.dll:Valve.VR.SteamVR_CameraMask
 eae4e0b75233a13d98a251f095966322 SteamVR.dll:Valve.VR.SteamVR_Settings
 53cefe5d98cadefbab750835e70b89c0 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -187,7 +187,7 @@ f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 de47fca73e60fb6311c248f9d2064d6f SteamVR.dll:Valve.VR.SteamVR_Behaviour_Single
 486cd95c82d8305219c352c06b776e1f SteamVR.dll:Valve.VR.InteractionSystem.IgnoreTeleportTrace
 486cd95c82d8305219c352c06b776e1f SteamVR.dll:Valve.VR.InteractionSystem.Sample.SkeletonUIOptions
-c37b9f82fabb1d7c1c8f425f1aede149 Assembly-CSharp.dll:.FieldScript
+dcecc797224da12ba23b78580df95656 Assembly-CSharp.dll:.FieldScript
 486cd95c82d8305219c352c06b776e1f SteamVR.dll:Valve.VR.InteractionSystem.Sample.ButtonEffect
 6d4bc77117b0fa16d516e2b47f7c8eca SteamVR.dll:Valve.VR.InteractionSystem.Interactable
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
@@ -198,7 +198,7 @@ c37b9f82fabb1d7c1c8f425f1aede149 Assembly-CSharp.dll:.FieldScript
 a3a604e895781b9bcfa0326c948de057 SteamVR.dll:Valve.VR.SteamVR_Behaviour_Skeleton
 662608dbadd465af831e54917ab10a6c SteamVR.dll:Valve.VR.InteractionSystem.FireSource
 cb627b69b2264319338db084039ddd9a SteamVR.dll:Valve.VR.InteractionSystem.LinearMapping
-c1b7e2bb842ab0d955fbcbd1bd83590c Assembly-CSharp.dll:.HoldPiece
+edcdf463c2f8f7e9baeabb3a19e9a3f9 Assembly-CSharp.dll:.HoldPiece
 ac1c961ea0dd33e569d245563acc9f89 SteamVR.dll:Valve.VR.Extras.SteamVR_TestThrow
 ca1aa18bc07429d81bcf6486181f2b9c SteamVR.dll:Valve.VR.InteractionSystem.Longbow
 486cd95c82d8305219c352c06b776e1f SteamVR.dll:Valve.VR.InteractionSystem.ExplosionWobble

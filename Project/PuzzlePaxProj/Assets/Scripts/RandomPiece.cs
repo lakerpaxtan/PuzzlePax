@@ -25,6 +25,8 @@ public class RandomPiece : MonoBehaviour {
 
     public GameObject cornerPrefab;
 
+    public GameObject weirdPrefab;
+
     private TMPro.TextMeshProUGUI textComponent; 
 
     public static int nextPiece;
@@ -56,7 +58,7 @@ public class RandomPiece : MonoBehaviour {
     //Used to get a random piece and show it in the canvas as well as destroy the old showpiece
     public void setNextPiece()
     {
-        nextPiece = Random.Range(1, 7);
+        nextPiece = Random.Range(1, 8);
         GameObject tempPiece = showPiece;
         switch(nextPiece)
         {
@@ -80,6 +82,9 @@ public class RandomPiece : MonoBehaviour {
                 break;
             case 6: 
                 showPiece = Instantiate(cornerPrefab);
+                break;
+            case 7:
+                showPiece = Instantiate(weirdPrefab);
                 break;
 
         }

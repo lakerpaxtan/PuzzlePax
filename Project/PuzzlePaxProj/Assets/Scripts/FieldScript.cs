@@ -24,6 +24,8 @@ public class FieldScript : MonoBehaviour
     public GameObject textObject;
     public Material lMaterial;
     public Material lineMaterial;
+    public int setSizeDim;
+    public int setYOff;
 
     public Material cubeMaterial;
     public Material cubeMaterialST;
@@ -34,6 +36,8 @@ public class FieldScript : MonoBehaviour
     public Material tMaterialST;
     public Material cornerMaterialST;
     public Material cornerMaterial;
+    public Material weirdMaterialST;
+    public Material weirdMaterial;
     public float currentSpeed;
     public float currentDecrement;
     public float currentDecrementRate;
@@ -93,16 +97,17 @@ public class FieldScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         wallOff = 4;
         hasHeldBool = false;
-        yOffset = 5;
+        yOffset = setYOff;
         randomScript = this.gameObject.GetComponent<RandomPiece>();
         holdScript = this.gameObject.GetComponent<HoldPiece>();
         currentSpeed = 2.5f;
         currentScore = 0;
         currentPieces = 0;
         allPieces = new HashSet<PieceObject>();
-        sizeDim = 7;
+        sizeDim = setSizeDim;
         actualField = new PieceObject[sizeDim, sizeDim + yOffset, sizeDim];
         boolField = new bool[sizeDim, sizeDim + yOffset, sizeDim];
         shouldSpawn = true;
@@ -432,6 +437,9 @@ public class FieldScript : MonoBehaviour
             case ("cornerPiece"):
                 reflectionMat = cornerMaterialST;
                 break;
+            case ("weirdPiece"):
+                reflectionMat = weirdMaterialST;
+                break;
         }
 
         var currNode = reflectionObjects.First;
@@ -491,6 +499,10 @@ public class FieldScript : MonoBehaviour
         else if (tempString == "cornerPiece")
         {
             tempSet2 = cornerPieceSet();
+        }
+        else if(tempString == "weirdPiece")
+        {
+            tempSet2 = weirdPieceSet();
         }
 
         if (lossCheck(tempSet2))
@@ -1144,6 +1156,11 @@ public class FieldScript : MonoBehaviour
                 tempString = "cornerPiece";
                 break;
 
+            case 7:
+                tempSet2 = weirdPieceSet();
+                tempString = "weirdPiece";
+                break;
+
             default:
                 tempString = "broken";
                 break;
@@ -1166,6 +1183,24 @@ public class FieldScript : MonoBehaviour
 
 
     }
+
+
+    LinkedList<Vector3> weirdPieceSet()
+    {
+        LinkedList<Vector3> tempSet2 = new LinkedList<Vector3>();
+        Vector3 tempVector;
+        tempSet2.AddLast(spawnTop);
+        tempVector = new Vector3(spawnTop.x - 1, spawnTop.y , spawnTop.z );
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x , spawnTop.y-1, spawnTop.z);
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x , spawnTop.y - 1, spawnTop.z -1);
+        tempSet2.AddLast(tempVector);
+
+        return tempSet2;
+
+    }
+
 
     //returns a set of vector points for an l piece
     LinkedList<Vector3> lPieceSet()
@@ -1348,6 +1383,10 @@ public class FieldScript : MonoBehaviour
             if(tempString == "cornerPiece")
             {
                 currentCube.GetComponent<MeshRenderer>().material = cornerMaterial;
+            }
+            if(tempString == "weirdPiece")
+            {
+                currentCube.GetComponent<MeshRenderer>().material = weirdMaterial;
             }
 
 

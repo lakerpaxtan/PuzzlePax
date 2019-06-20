@@ -22,6 +22,8 @@ public class HoldPiece : MonoBehaviour
 
     public GameObject zPrefab;
 
+    public GameObject weirdPrefab;
+
     public GameObject linePrefab;
 
     public static string heldPiece;
@@ -88,6 +90,9 @@ public class HoldPiece : MonoBehaviour
                 break;
             case "cornerPiece":
                 showPiece = Instantiate(cornerPrefab);
+                break;
+            case "weirdPiece":
+                showPiece = Instantiate(weirdPrefab);
                 break;
 
         }
