@@ -122,6 +122,8 @@ public class FieldScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Vector2 oculusPadVector = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
         
         //Used to call the canvas updater for score and block numbers
         updateCanvas();
@@ -135,7 +137,7 @@ public class FieldScript : MonoBehaviour
 
         //Debug.Log("XPos1: " + leftJoyPosition.GetAxis(leftHand).x + "XPos2: " + leftJoyPosition.GetAxis(leftHand).y);
 
-
+        Vector2 tempVec = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
 
         if (Input.GetButtonDown("Drop") || instantPlacement.GetStateDown(rightHand) || instantPlacement.GetStateDown(leftHand))
         {
@@ -162,6 +164,164 @@ public class FieldScript : MonoBehaviour
             }
         }
 
+        //------------------------
+
+        if((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x < -0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f))
+        {
+            if (currentPiece.possibleLeftwardMovement())
+            {
+                playPieceSound(pieceMovementSound);
+                movePieceLeft();
+                reflectionUpdate();
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x > 0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f))
+        {
+            if (currentPiece.possibleRightwardMovement())
+            {
+                playPieceSound(pieceMovementSound);
+                movePieceRight();
+                reflectionUpdate();
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > 0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        {
+            if (currentPiece.possibleForwardMovement())
+            {
+                playPieceSound(pieceMovementSound);
+                movePieceForward();
+                reflectionUpdate();
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > -0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        {
+            if (currentPiece.possibleBackwardMovement())
+            {
+                playPieceSound(pieceMovementSound);
+                movePieceBackward();
+                reflectionUpdate();
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+            
+            
+        }
+
+        //-----------------
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x < -0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f))
+        {
+            if (currentPiece.possibleRotateZAxis(1))
+            {
+                //Debug.Log("rotateZ");
+                playPieceSound(pieceRotateSound);
+                rotateZAxis(1);
+                reflectionUpdate();
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x > 0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f))
+        {
+            if (currentPiece.possibleRotateYAxis(1))
+            {
+                //Debug.Log("rotateY");
+                rotateYAxis(1);
+                reflectionUpdate();
+                playPieceSound(pieceRotateSound);
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > 0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        {
+            if (currentPiece.possibleRotateXAxis(1))
+            {
+                //Debug.Log("rotateX");
+                playPieceSound(pieceRotateSound);
+                rotateXAxis(1);
+                reflectionUpdate();
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > -0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        {
+            if (currentPiece.possibleDownwardMovement())
+            {
+                //Debug.Log("can move piece down");
+                playPieceSound(pieceMovementSound);
+                movePieceDown(currentPiece);
+                reflectionUpdate();
+            }
+            else
+            {
+                //Debug.Log("cant move piece down");
+                Debug.Log("input cant move down");
+                lockPieceAndSwapSpawn();
+            }
+
+
+        }
+
+        //-----------------------
+
+
+        if (OVRInput.GetDown(OVRInput.Button.Back))
+        {
+            Debug.Log("moving all the day down");
+            moveCurrentPieceAllTheWayDown();
+        }
+
+
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.GetDown(OVRInput.Button.Back))
+        {
+            if (!hasHeldBool)
+            {
+                playPieceSound(holdSound);
+                hasHeldBool = true;
+                holdCurrentPiece();
+
+
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+
+        //-----------------------------------------------------
         //Button to move Piece leftwards
         if ( leftActionJoy.GetStateDown(leftHand)|| Input.GetButtonDown("Left") || (leftAction.GetStateDown(leftHand) && trackpadLeftPosition.GetAxis(leftHand).x < -0.5f && trackpadLeftPosition.GetAxis(leftHand).y < 0.45f && trackpadLeftPosition.GetAxis(leftHand).y > -0.45f))
         {
@@ -1190,11 +1350,11 @@ public class FieldScript : MonoBehaviour
         LinkedList<Vector3> tempSet2 = new LinkedList<Vector3>();
         Vector3 tempVector;
         tempSet2.AddLast(spawnTop);
-        tempVector = new Vector3(spawnTop.x - 1, spawnTop.y , spawnTop.z );
+        tempVector = new Vector3(spawnTop.x - 1, spawnTop.y - 1, spawnTop.z);
         tempSet2.AddLast(tempVector);
-        tempVector = new Vector3(spawnTop.x , spawnTop.y-1, spawnTop.z);
+        tempVector = new Vector3(spawnTop.x, spawnTop.y - 1, spawnTop.z);
         tempSet2.AddLast(tempVector);
-        tempVector = new Vector3(spawnTop.x , spawnTop.y - 1, spawnTop.z -1);
+        tempVector = new Vector3(spawnTop.x - 1, spawnTop.y - 1, spawnTop.z - 1);
         tempSet2.AddLast(tempVector);
 
         return tempSet2;
@@ -1208,11 +1368,11 @@ public class FieldScript : MonoBehaviour
         LinkedList<Vector3> tempSet2 = new LinkedList<Vector3>();
         Vector3 tempVector;
         tempSet2.AddLast(spawnTop);
-        tempVector = new Vector3(spawnTop.x, spawnTop.y, spawnTop.z + 1);
+        tempVector = new Vector3(spawnTop.x + 1, spawnTop.y, spawnTop.z + 1);
+        tempSet2.AddLast(tempVector);
+        tempVector = new Vector3(spawnTop.x + 1, spawnTop.y, spawnTop.z);
         tempSet2.AddLast(tempVector);
         tempVector = new Vector3(spawnTop.x - 1, spawnTop.y, spawnTop.z);
-        tempSet2.AddLast(tempVector);
-        tempVector = new Vector3(spawnTop.x - 2, spawnTop.y, spawnTop.z);
         tempSet2.AddLast(tempVector);
 
         return tempSet2;
@@ -1262,7 +1422,7 @@ public class FieldScript : MonoBehaviour
         tempSet2.AddLast(tempVector);
         tempVector = new Vector3(spawnTop.x - 2, spawnTop.y, spawnTop.z);
         tempSet2.AddLast(tempVector);
-        tempVector = new Vector3(spawnTop.x - 3, spawnTop.y, spawnTop.z);
+        tempVector = new Vector3(spawnTop.x +1, spawnTop.y, spawnTop.z);
         tempSet2.AddLast(tempVector);
 
         return tempSet2;
@@ -1408,6 +1568,12 @@ public class FieldScript : MonoBehaviour
     void lockPieceAndSwapSpawn()
     {
 
+        bool[] xBool = new bool[sizeDim];
+        bool[] zBool = new bool[sizeDim];
+
+        
+      
+
         removeReflection();
         removeOutline(currentPiece, currentPiece.getPieceName());
         hasHeldBool = false;
@@ -1419,8 +1585,44 @@ public class FieldScript : MonoBehaviour
         {
             oneLoop = false;
 
+
+            for (int a = 0; a < sizeDim; a++)
+            {
+                xBool[a] = false;
+                zBool[a] = false;
+            }
+
+           
+
+            for (int i = 0; i < sizeDim; i++)
+            {
+                if (isFullWallX(i))
+                {
+
+                    comboCounter += 1;
+                    //removeFullWallX(i);
+                    Debug.Log("done wallX" + i);
+                    oneLoop = true;
+                    xBool[i] = true;
+                }
+                
+            }
+
+            for (int i = 0; i < sizeDim; i++)
+            {
+                if (isFullWallZ(i))
+                {
+                    comboCounter += 1;
+                    //removeFullWallZ(i);
+                    Debug.Log("done wallZ" + i);
+                    oneLoop = true;
+                    zBool[i] = true;
+                }
+
+            }
+
             for (int i = 0; i < sizeDim + yOffset; i++)
-            { 
+            {
                 if (isFullFloor(i))
                 {
                     comboCounter += 1;
@@ -1431,34 +1633,30 @@ public class FieldScript : MonoBehaviour
 
             }
 
-            for (int i = 0; i < sizeDim; i++)
+
+            for (int a = 0; a < sizeDim; a++)
             {
-                if (isFullWallX(i))
+                if (xBool[a])
                 {
-                    comboCounter += 1;
-                    removeFullWallX(i);
-                    Debug.Log("done wallX" + i);
-                    oneLoop = true;
+                   // comboCounter += 1;
+                    removeFullWallX(a);
+                    Debug.Log("done wallX" + a);
                 }
 
-            }
-
-            for (int i = 0; i < sizeDim; i++)
-            {
-                if (isFullWallZ(i))
+                if (zBool[a])
                 {
-                    comboCounter += 1;
-                    removeFullWallZ(i);
-                    Debug.Log("done wallZ" + i);
-                    oneLoop = true;
+                    //comboCounter += 1;
+                    removeFullWallZ(a);
+                    Debug.Log("done wallZ" + a);
                 }
-
+                
             }
 
-
-
+            
 
         }
+
+
         if(comboCounter == 1)
         {
             currentScore += 1000;

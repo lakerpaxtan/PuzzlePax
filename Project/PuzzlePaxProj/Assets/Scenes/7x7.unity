@@ -418,7 +418,7 @@ MonoBehaviour:
   lMaterial: {fileID: 2100000, guid: e60b02708aa4b0a4798725b5d995e6a0, type: 2}
   lineMaterial: {fileID: 2100000, guid: a1a7f30e473cc5a409643ab5e02837b7, type: 2}
   setSizeDim: 7
-  setYOff: 0
+  setYOff: 5
   cubeMaterial: {fileID: 2100000, guid: dcdf624f9dc1643d8b351d0d0d01cd59, type: 2}
   cubeMaterialST: {fileID: 2100000, guid: f9a67a2e88f574e8099487caf7bd2617, type: 2}
   zMaterial: {fileID: 2100000, guid: eca9edb7bcc825d468e46b36cd676cf4, type: 2}

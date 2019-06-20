@@ -340,7 +340,7 @@ public class PieceObject {
         foreach (var element in newSet)
         {
 
-            if( (element.x < 0 || element.x >= FieldScript.sizeDim) || (element.y <= 0 || element.y >= FieldScript.sizeDim + FieldScript.yOffset) || (element.z <= 0 || element.z >= FieldScript.sizeDim))
+            if( (element.x < 0 || element.x >= FieldScript.sizeDim) || (element.y < 0 || element.y >= FieldScript.sizeDim + FieldScript.yOffset) || (element.z <= 0 || element.z >= FieldScript.sizeDim))
             {
                 currentBool = false;
             }
@@ -395,7 +395,7 @@ public class PieceObject {
         //checking if overlaps 
         foreach (var element in newSet)
         {
-            if ((element.x < 0 || element.x >= FieldScript.sizeDim) || (element.y <= 0 || element.y >= FieldScript.sizeDim + FieldScript.yOffset) || (element.z < 0 || element.z >= FieldScript.sizeDim))
+            if ((element.x < 0 || element.x >= FieldScript.sizeDim) || (element.y < 0 || element.y >= FieldScript.sizeDim + FieldScript.yOffset) || (element.z < 0 || element.z >= FieldScript.sizeDim))
             {
                 currentBool = false;
             }
@@ -446,7 +446,7 @@ public class PieceObject {
         //checking if overlaps 
         foreach (var element in newSet)
         {
-            if ((element.x < 0 || element.x >= FieldScript.sizeDim) || (element.y <= 0 || element.y >= FieldScript.sizeDim + FieldScript.yOffset) || (element.z < 0 || element.z >= FieldScript.sizeDim))
+            if ((element.x < 0 || element.x >= FieldScript.sizeDim) || (element.y < 0 || element.y >= FieldScript.sizeDim + FieldScript.yOffset) || (element.z < 0 || element.z >= FieldScript.sizeDim))
             {
                 currentBool = false;
             }
