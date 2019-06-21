@@ -98,6 +98,11 @@ public class FieldScript : MonoBehaviour
     void Start()
     {
 
+        OVRManager.display.displayFrequency = 72f;
+        UnityEngine.XR.XRSettings.eyeTextureResolutionScale = 2f;
+        OVRManager.fixedFoveatedRenderingLevel = OVRManager.FixedFoveatedRenderingLevel.High;
+
+
         wallOff = 4;
         hasHeldBool = false;
         yOffset = setYOff;
@@ -166,7 +171,7 @@ public class FieldScript : MonoBehaviour
 
         //------------------------
 
-        if((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x < -0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f))
+        if((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x < -0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f) && !OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             if (currentPiece.possibleLeftwardMovement())
             {
@@ -180,7 +185,7 @@ public class FieldScript : MonoBehaviour
             }
         }
 
-        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x > 0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f))
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x > 0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f) && !OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             if (currentPiece.possibleRightwardMovement())
             {
@@ -195,7 +200,7 @@ public class FieldScript : MonoBehaviour
         }
 
 
-        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > 0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > 0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f) && !OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             if (currentPiece.possibleForwardMovement())
             {
@@ -210,7 +215,7 @@ public class FieldScript : MonoBehaviour
         }
 
 
-        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > -0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y < -0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f) && !OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             if (currentPiece.possibleBackwardMovement())
             {
@@ -275,7 +280,7 @@ public class FieldScript : MonoBehaviour
         }
 
 
-        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y > -0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.y < -0.5f && oculusPadVector.x < 0.45f && oculusPadVector.x > -0.45f))
         {
             if (currentPiece.possibleDownwardMovement())
             {
@@ -297,7 +302,7 @@ public class FieldScript : MonoBehaviour
         //-----------------------
 
 
-        if (OVRInput.GetDown(OVRInput.Button.Back))
+        if (OVRInput.GetDown(OVRInput.Button.Back) && !OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             Debug.Log("moving all the day down");
             moveCurrentPieceAllTheWayDown();

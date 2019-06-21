@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/10x10.unity
     guid: 5a9c256696ee0994a9ab606c473d8233
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/7x7.unity
     guid: a5836e84765821b4daa348da80ae054f
+  - enabled: 1
+    path: Assets/Scenes/7x7Oculus.unity
+    guid: 3f138f07d42b2074faa69843f1be7033
   m_configObjects: {}
