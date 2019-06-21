@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/paxtan/Desktop/oculusGo/testBuildAPK.apk
+C:/Users/paxtan/Documents/PuzzlePaxRepo/PuzzlePax/Project/PuzzlePaxProj/OculusGoBuild/testBuildAPK.apk
 SceneListBegin?
 Assets/Scenes/7x7Oculus.unity
 SceneListEnd?

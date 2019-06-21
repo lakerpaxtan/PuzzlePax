@@ -144,31 +144,10 @@ public class FieldScript : MonoBehaviour
 
         Vector2 tempVec = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
 
-        if (Input.GetButtonDown("Drop") || instantPlacement.GetStateDown(rightHand) || instantPlacement.GetStateDown(leftHand))
-        {
-            Debug.Log("moving all the day down");
-            moveCurrentPieceAllTheWayDown();
 
-        }
-
-
-        //Button to hold a piece; Currently assigned to right trigger
-        if (holdAction.GetStateDown(rightHand) || Input.GetButtonDown("Hold"))
-        {
-            if (!hasHeldBool)
-            {
-                playPieceSound(holdSound);
-                hasHeldBool = true;
-                holdCurrentPiece();
-               
-
-            }
-            else
-            {
-                playPieceSound(rejectedSound);
-            }
-        }
-
+        /*
+       
+        */
         //------------------------
 
         if((OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad) && oculusPadVector.x < -0.5f && oculusPadVector.y < 0.45f && oculusPadVector.y > -0.45f) && !OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
@@ -317,6 +296,35 @@ public class FieldScript : MonoBehaviour
                 hasHeldBool = true;
                 holdCurrentPiece();
 
+
+            }
+            else
+            {
+                playPieceSound(rejectedSound);
+            }
+        }
+
+        /*
+
+
+
+         if (Input.GetButtonDown("Drop") || instantPlacement.GetStateDown(rightHand) || instantPlacement.GetStateDown(leftHand))
+        {
+            Debug.Log("moving all the day down");
+            moveCurrentPieceAllTheWayDown();
+
+        }
+
+
+        //Button to hold a piece; Currently assigned to right trigger
+        if (holdAction.GetStateDown(rightHand) || Input.GetButtonDown("Hold"))
+        {
+            if (!hasHeldBool)
+            {
+                playPieceSound(holdSound);
+                hasHeldBool = true;
+                holdCurrentPiece();
+               
 
             }
             else
@@ -519,7 +527,8 @@ public class FieldScript : MonoBehaviour
                 playPieceSound(rejectedSound);
             }
         }
-
+    
+     */
 
     }
 
