@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12093172, g: 0.18654957, b: 0.33526418, a: 1}
+  m_IndirectSpecularColor: {r: 0.3849333, g: 0.47227114, b: 0.6183276, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -431,7 +431,7 @@ MonoBehaviour:
   weirdMaterialST: {fileID: 2100000, guid: 14b788eb7b9cdd845b8a1248ca185a7c, type: 2}
   weirdMaterial: {fileID: 2100000, guid: 86028acef950923489c53e135bcc3d4a, type: 2}
   currentSpeed: 3
-  currentDecrement: 0.002
+  currentDecrement: 0.008
   currentDecrementRate: 1
   minimumSpeed: 0.75
   leftHand: 1
@@ -843,7 +843,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5022a3fcef863ac45af402b503e1ff04, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.025
+  m_Volume: 0.502
   m_Pitch: 1
   Loop: 1
   Mute: 0

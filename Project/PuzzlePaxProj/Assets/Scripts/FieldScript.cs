@@ -98,9 +98,9 @@ public class FieldScript : MonoBehaviour
     void Start()
     {
 
-        OVRManager.display.displayFrequency = 72f;
+        /*OVRManager.display.displayFrequency = 72f;
         UnityEngine.XR.XRSettings.eyeTextureResolutionScale = 2f;
-        OVRManager.fixedFoveatedRenderingLevel = OVRManager.FixedFoveatedRenderingLevel.High;
+        OVRManager.fixedFoveatedRenderingLevel = OVRManager.FixedFoveatedRenderingLevel.High;*/
 
 
         wallOff = 4;
@@ -304,7 +304,7 @@ public class FieldScript : MonoBehaviour
             }
         }
 
-        /*
+        
 
 
 
@@ -528,7 +528,7 @@ public class FieldScript : MonoBehaviour
             }
         }
     
-     */
+     
 
     }
 
